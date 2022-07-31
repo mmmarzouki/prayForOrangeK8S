@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books-api
+  template:
+    metadata:
+      labels:
+        app: books-api
+    spec:
+      containers:
+        - name: todo
+          image: mmmarzouki/example-app:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: test-db #TODO DB_HOST
+            - name: DB_NAME
+              value: test-db
+            - name: DB_USER
+              value: root
+            - name: DB_DIALECT
+              value: mysql
+            - name: DB_PASSWORD
+              value: root #TODO DB_PASSWORD from vault
