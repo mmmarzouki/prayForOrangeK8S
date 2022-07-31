@@ -13,7 +13,7 @@ spec:
         app: books-api
     spec:
       containers:
-        - name: todo
+        - name: books-api
           image: mmmarzouki/example-app:latest
           ports:
             - containerPort: 3000
