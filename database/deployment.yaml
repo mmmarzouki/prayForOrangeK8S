@@ -25,7 +25,6 @@ spec:
         - name: mysql-container
           image: mysql
           args:
-          args: ["sh", "-c", "source /vault/secrets/database-config.txt && <entrypoint script>"]
           env:
             - name: MYSQL_DATABASE
               value: test-db
