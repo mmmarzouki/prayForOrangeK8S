@@ -9,6 +9,14 @@ spec:
       app: books-api
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "internal-app"
+        vault.hashicorp.com/agent-inject-secret-database-config.txt: "internal/data/database/config"
+        vault.hashicorp.com/agent-inject-template-database-config.txt: |
+          {{- with secret "internal/data/database/config" -}}
+            export DB_PASSWORD="{{ .Data.data.password }}" DB_PASSWORD="{{ .Data.data.username }}"
+          {{- end -}}
       labels:
         app: books-api
     spec:
@@ -22,9 +30,5 @@ spec:
               value: 10.96.43.169
             - name: DB_NAME
               value: test-db
-            - name: DB_USER
-              value: root
             - name: DB_DIALECT
               value: mysql
-            - name: DB_PASSWORD
-              value: root #TODO DB_PASSWORD from vault
