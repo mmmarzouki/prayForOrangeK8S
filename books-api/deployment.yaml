@@ -34,7 +34,7 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: 10.96.43.169
+              value: 10.103.196.189
             - name: DB_NAME
               value: test-db
             - name: DB_DIALECT
