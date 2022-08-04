@@ -9,6 +9,14 @@ spec:
   replicas: 1
   template:
     metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "internal-app"
+        vault.hashicorp.com/agent-inject-secret-database-config.txt: "internal/data/database/config"
+        vault.hashicorp.com/agent-inject-template-database-config.txt: |
+          {{- with secret "internal/data/database/config" -}}
+            export MYSQL_ROOT_PASSWORD="{{ .Data.data.password }}"
+          {{- end -}}
       labels:
         app: mysql-app
     spec:
@@ -16,8 +24,6 @@ spec:
         - name: mysql-container
           image: mysql
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: root #TODO: password in secrets
             - name: MYSQL_DATABASE
               value: test-db
           ports:
