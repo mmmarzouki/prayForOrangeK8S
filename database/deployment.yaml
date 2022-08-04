@@ -20,6 +20,7 @@ spec:
       labels:
         app: mysql-app
     spec:
+      serviceAccountName: internal-app
       containers:
         - name: mysql-container
           image: mysql

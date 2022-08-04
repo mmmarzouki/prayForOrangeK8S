@@ -20,6 +20,7 @@ spec:
       labels:
         app: books-api
     spec:
+      serviceAccountName: internal-app
       containers:
         - name: books-api
           image: mmmarzouki/example-app:latest
