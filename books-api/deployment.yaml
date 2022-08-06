@@ -25,7 +25,12 @@ spec:
       containers:
         - name: books-api
           image: mmmarzouki/example-app:latest
-          args: ["sh", "-c", "source /vault/secrets/database-config.txt && env"]
+          args:
+            [
+              "sh",
+              "-c",
+              "/vault/secrets/database-config.txt && env && <entrypoint script>",
+            ]
           ports:
             - containerPort: 3000
           env:
