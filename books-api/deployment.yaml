@@ -28,7 +28,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             [
-              ". /vault/secrets/database-config.txt && env >> /app/secret.txt && sleep 600",
+              ". /vault/secrets/database-config.txt && env >> /home/node/secret.txt",
             ]
           ports:
             - containerPort: 3000
