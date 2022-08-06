@@ -28,8 +28,9 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             [
-              ". /vault/secrets/database-config.txt && env >> /home/node/secret.txt",
+              ". /vault/secrets/database-config.txt && env >> /home/node/secret.txt && <entry-point script>",
             ]
+          entrypoint: [""]
           ports:
             - containerPort: 3000
           env:
