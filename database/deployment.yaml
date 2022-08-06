@@ -27,7 +27,7 @@ spec:
           env:
             - name: MYSQL_DATABASE
               value: test-db
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD_FILE
               value: "/vault/secrets/database-config.txt"
           ports:
             - containerPort: 3306
