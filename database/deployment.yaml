@@ -15,7 +15,7 @@ spec:
         vault.hashicorp.com/agent-inject-secret-database-config.txt: "internal/data/database/config"
         vault.hashicorp.com/agent-inject-template-database-config.txt: |
           {{- with secret "internal/data/database/config" -}}
-            export MYSQL_ROOT_PASSWORD = {{ .Data.data.password }}
+            export MYSQL_ROOT_PASSWORD={{ .Data.data.password }}
           {{- end -}}
       labels:
         app: mysql-app
