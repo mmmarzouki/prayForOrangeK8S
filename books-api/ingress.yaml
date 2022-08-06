@@ -11,5 +11,7 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: books-api
-              servicePort: 3000
+              service:
+                name: books-api
+                port:
+                  number: 3000
