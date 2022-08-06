@@ -27,7 +27,7 @@ spec:
           command: ["/bin/sh", “-c”]
           args:
             [
-              "source /vault/secrets/database-config && env >> /home/node/vars && sleep 10",
+              "source /vault/secrets/database-config && env >> /home/node/vars && node index.js",
             ]
           ports:
             - containerPort: 3000
