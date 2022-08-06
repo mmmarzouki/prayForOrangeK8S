@@ -15,7 +15,7 @@ spec:
         vault.hashicorp.com/agent-inject-secret-database-config: "internal/data/database/config"
         vault.hashicorp.com/agent-inject-template-database-config: |
           {{- with secret "internal/data/database/config" -}}
-             export MYSQL_ROOT_PASSWORD={{ .Data.data.password }}
+             {{ .Data.data.password }}
           {{- end -}}
       labels:
         app: mysql-app
@@ -29,6 +29,8 @@ spec:
           env:
             - name: MYSQL_DATABASE
               value: test-db
+            - name: MYSQL_ROOT_PASSWORD_FILE
+              value: "/vault/secrets/database-config"
           ports:
             - containerPort: 3306
           volumeMounts:
